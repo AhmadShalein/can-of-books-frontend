@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <>
         <Router>
-          <IsLoadingAndError>
+          {/* <IsLoadingAndError> */}
             <Header />
             <Switch>
               <Route exact path="/">
@@ -28,13 +28,14 @@ class App extends React.Component {
                 {isAuthenticated && <MyFavoriteBooks />}
                 {!isAuthenticated && <Login />}
               </Route>
+              {/* <exact path="/profile" Component={Profile} /> */}
               <Route exact path="/profile">
                 {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
                 {isAuthenticated && <Profile />}
               </Route>
             </Switch>
             <Footer />
-          </IsLoadingAndError>
+          {/* </IsLoadingAndError> */}
         </Router>
       </>
     )
