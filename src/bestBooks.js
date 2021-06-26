@@ -6,19 +6,26 @@ import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 import AddBookButton from './AddBookButton';
 import DeleteBookButton from './DeleteBookButton';
+import UpdateBookButton from './UpdateBookButton';
 
 class BestBooks extends React.Component{
     constructor(props){
         super(props);
         this.state={
             bookData:[],
-            showModel:true,
+            showModel:false,
         }
     }
 
     booksDataAfterDelete = (newDataAfterDelete) => {
         this.setState({
             bookData: newDataAfterDelete
+        })
+    }
+
+    booksDataAfterUpdate = (newDataAfterUpdate) => {
+        this.setState({
+            bookData: newDataAfterUpdate
         })
     }
 
@@ -31,11 +38,11 @@ class BestBooks extends React.Component{
         })
         console.log(this.state.bookData);
     })
-    // .catch(
-    //     error => {
-    //         alert(error.message);
-    //     }
-    // );
+    .catch(
+        error => {
+            alert(error.message);
+        }
+    );
     }
 
     newBook = (newBookData) => {
@@ -62,6 +69,7 @@ class BestBooks extends React.Component{
                     <p>{item.status}</p>
                     </Carousel.Caption>
                     <DeleteBookButton bookIndex={index} booksDataAfterDelete={this.booksDataAfterDelete} />
+                    <UpdateBookButton bookIndex={index} booksDataAfterUpdate={this.booksDataAfterUpdate} />
                     </Carousel.Item> 
                       ))}
                  </Carousel>  */}
@@ -75,6 +83,7 @@ class BestBooks extends React.Component{
                         <p>{item.status}</p>
                         </Card.Text>
                         <DeleteBookButton bookIndex={index} booksDataAfterDelete={this.booksDataAfterDelete} />
+                        <UpdateBookButton bookIndex={index} booksDataAfterUpdate={this.booksDataAfterUpdate} />
                     </Card.Body>
                     ))}
                     </Card>
